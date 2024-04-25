@@ -17,7 +17,6 @@ import org.tensorflow.lite.task.vision.classifier.Classifications
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var imageClassifierHelper: ImageClassifierHelper
 
     private var currentImageUri: Uri? = null
 
@@ -44,8 +43,9 @@ class MainActivity : AppCompatActivity() {
         ActivityResultContracts.PickVisualMedia()
     ) { uri: Uri? ->
         if (uri != null) {
-            currentImageUri = uri
-            showImage()
+            val intent = Intent(this, CropActivity::class.java)
+            intent.putExtra(CropActivity.IMAGE_TO_CROP, uri.toString())
+            startActivityForResult(intent, 101)
         } else {
             Log.d("Photo Picker", "No media selected")
         }
@@ -93,5 +93,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == -1 && requestCode == 101) {
+            val croppedImage = Uri.parse(data?.getStringExtra("CROPPED_IMAGE"))
+            if (croppedImage != null) {
+                currentImageUri = croppedImage
+                showImage()
+            }
+        }
     }
 }

@@ -18,9 +18,9 @@ class ResultActivity : AppCompatActivity() {
 
         val imageUri = Uri.parse(intent.getStringExtra(EXTRA_IMAGE_URI))
         val label = intent.getStringExtra(EXTRA_RESULT_LABEL)
-        val score = intent.getFloatExtra(EXTRA_RESULT_SCORE, 0F)
+        val score = (intent.getFloatExtra(EXTRA_RESULT_SCORE, 0F) * 100).toInt()
 
-        val resultText = "$label $score"
+        val resultText = "$label $score%"
 
         imageUri?.let {
             binding.resultImage.setImageURI(it)
