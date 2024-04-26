@@ -31,7 +31,6 @@ class CropActivity : AppCompatActivity() {
         UCrop.of(imageUri, Uri.fromFile(File(cacheDir, destinationUri)))
             .withAspectRatio(1F, 1F)
             .withMaxResultSize(2000, 2000)
-            .useSourceImageAspectRatio()
             .start(this);
     }
     companion object {
