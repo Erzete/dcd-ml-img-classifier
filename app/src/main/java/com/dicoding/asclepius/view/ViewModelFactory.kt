@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.dicoding.asclepius.data.local.DetectionHistoryRepository
 import com.dicoding.asclepius.di.Injection
 import com.dicoding.asclepius.view.history.HistoryViewModel
+import com.dicoding.asclepius.view.news.NewsViewModel
 
 class ViewModelFactory private constructor(private val historyRepository: DetectionHistoryRepository) :
     ViewModelProvider.NewInstanceFactory() {
@@ -13,6 +14,8 @@ class ViewModelFactory private constructor(private val historyRepository: Detect
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(HistoryViewModel::class.java)) {
             return HistoryViewModel(historyRepository) as T
+        } else if (modelClass.isAssignableFrom(NewsViewModel::class.java)) {
+            return NewsViewModel() as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

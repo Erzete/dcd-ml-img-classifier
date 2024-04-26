@@ -6,5 +6,9 @@
             android:id="@+id/menu1"
             android:title="@string/history_list"
             app:showAsAction="never" />
+        <item
+            android:id="@+id/menu2"
+            android:title="@string/news"
+            app:showAsAction="never" />
     </group>
 </menu>

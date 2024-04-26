@@ -12,4 +12,7 @@
     <string name="history">Tambah Ke History</string>
     <string name="history_list">Detection History</string>
     <string name="app_title">Cancer Detection</string>
+    <string name="news_title">News Title</string>
+    <string name="news_description">Description</string>
+    <string name="news">Health News</string>
 </resources>

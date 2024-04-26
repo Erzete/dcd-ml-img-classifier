@@ -13,6 +13,7 @@ import com.dicoding.asclepius.R
 import com.dicoding.asclepius.databinding.ActivityMainBinding
 import com.dicoding.asclepius.helper.ImageClassifierHelper
 import com.dicoding.asclepius.view.history.HistoryActivity
+import com.dicoding.asclepius.view.news.NewsActivity
 import org.tensorflow.lite.support.label.Category
 import org.tensorflow.lite.task.vision.classifier.Classifications
 
@@ -30,6 +31,11 @@ class MainActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.menu1 -> {
                     val intent = Intent(this, HistoryActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.menu2 -> {
+                    val intent = Intent(this, NewsActivity::class.java)
                     startActivity(intent)
                     true
                 }
